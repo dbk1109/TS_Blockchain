@@ -44,3 +44,4 @@
 - let a:`unkown`: 변수의 타입을 미리 알지 못할때 확인함. 사용할때 if(typeof ...) 으로 사용.
 - function hello():`void` {...}: 아무것도 리턴하지 않는 함수라고 인식함.
 - function hello():`never` {...}: 절대 실행되면 안되는 함수라고 인식함.
+![image](https://user-images.githubusercontent.com/75190062/217847003-9adb9e77-c92f-40c4-9ddc-958806c365f7.png)
