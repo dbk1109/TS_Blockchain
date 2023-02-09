@@ -62,3 +62,6 @@ function add1(a: string, b: number) {
 const add2 = (a: string, b: number) => a + b;
 type Add = (a: string, b: number) => number;
 ```
+
+![image](https://user-images.githubusercontent.com/75190062/217847963-f920f41f-bd5b-4f64-8dd2-df83cf2034ac.png)
+
