@@ -1,4 +1,6 @@
-function add1(a: string, b: number) {
-  return a + b;
-}
-const add2 = (a: string, b: number) => a + b;
+type Add = {
+  (a: number, b: number): number;
+  (a: number, b: string): number;
+};
+
+const add: Add = (a, b) => {};
