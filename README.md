@@ -48,10 +48,12 @@
 
 ### functions
 
-- `Call Signeture` : 마우스를 올렸을때 함수의 인자(아규먼트)의 타입이랑 반환타입을 알려주는것.
-  > 매개변수=인자=parameter : 함수의 정의에서 전달받은 인수를 함수 내부로 전달하기 위해 사용하는 변수를 의미합니다.(함수에서 전달된 값을 받는 변수.) f(parameter)
-  > 인수=argument : 함수가 호출될 때 함수로 값을 전달해주는 값. (전달된 값)
-  ![image](https://user-images.githubusercontent.com/75190062/217847963-f920f41f-bd5b-4f64-8dd2-df83cf2034ac.png)
+> 헷갈려서 다시 정리하는 기본용어!
+> `매개변수`=인자=parameter : 함수의 정의에서 전달받은 인수를 함수 내부로 전달하기 위해 사용하는 변수를 의미합니다.(함수에서 전달된 값을 받는 변수.) f(parameter)
+> `인수`=argument : 함수가 호출될 때 함수로 값을 전달해주는 값. (전달된 값)
+> ![image](https://user-images.githubusercontent.com/75190062/217847963-f920f41f-bd5b-4f64-8dd2-df83cf2034ac.png)
+
+- `Call Signature` : 마우스를 올렸을때 함수의 인자(아규먼트)의 타입이랑 반환타입을 알려주는것.
   ```typescript
   /* AS IS */
   function add1(a: number, b: number) {
@@ -62,7 +64,7 @@
   type Add = (a: number, b: number) => number;
   const add: Add = (a, b) => a + b;
   ```
-- `Overloading` : 함수가 여러개의 Call Signeture를 가지고 있을때 사용함. -> 이것은 Next.js 에서 다시 알아보기로 하자.
+- `Overloading` : 함수가 여러개의 Call Signature를 가지고 있을때 사용함. -> 이것은 Next.js 에서 다시 알아보기로 하자.
   ```typescript
   type Add = {
     (a: number, b: number): number;
@@ -88,6 +90,43 @@
     type SuperPrint = {
       <Potato>(arr: Potato[]): void;
     };
-    const superPrint: SuperPrint = (arr) => arr[0]
+    const superPrint: SuperPrint = (arr) => arr[0];
     superPrint([true, false, 3, 4]); //작동!
     ```
+
+### Classes
+
+- js에서는 `this.name = name` 으로 선언해야하지만 ts에서는 `name: string`으로 선언하면 됨.
+- `private` : JS로 변환시에 가져가지지 않고 내부에서 호출시에도 응답하지 않는다. 하지만 JS에서는 호출에도 사용 가능. 타입스크립트에서 경고용으로 생각하면 좋다. 만약 속성을 프라이빗으로 만들었다면 익스텐드로 값을 상속받는다고 하더라도 밖의 상속자가 접근할 수 없다.
+- `protected` : 다른 자식 클래스에서 사용하고싶다면 이걸 사용하면 된다.
+- `public` : private 반대.
+- `추상클래스` : 다른 클래스가 상속받을 수 있음. 상속만 가능 `abstract`.
+- `추상메소드` : 추상클래스를 상속받는 모든것을 구현 해야하는 메소드
+- 접근 가능한 위치
+  ```
+  구분        선언한 클래스 내  상속받은 클래스 내  인스턴스
+  private         ⭕　　　　　  　　❌　　　　  　 ❌
+  protected       ⭕　　　　　　  　⭕　　　  　　 ❌
+  public          ⭕　　　　　　  　⭕　　　  　　 ⭕
+  ```
+- ```Typescript
+    abstract class User {
+      constructor(
+        private firstName: string,
+        private lastName: string,
+        public nickname: string
+      ) {}
+      abstract getNickName():void  //추상메소드
+
+      getFullName() {
+        return `${this.firstName}`;
+      }
+    }
+    class Player extends User {
+      getNickName() {
+      }
+    }
+  ```
+
+- 직접적으로 인스턴스를 만들수는 없다. (위에것에 선언시)
+  `const dabin = new User("dabin", "kim", "DBK"); //ERROR!`

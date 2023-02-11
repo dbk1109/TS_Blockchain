@@ -13,13 +13,27 @@
 const test = [1, 2, 3, "4", 5];
 const test2 = [1, 2, 3, 4, 5];
 
-type IndesReturn = {
+type IndexReturn = {
   <T>(arr: T[], item?: any): void;
 };
-const last: IndesReturn = (arr) => arr[arr.length - 1];
-const prepend: IndesReturn = (arr, item) => {
+const last: IndexReturn = (arr) => arr[arr.length - 1];
+const prepend: IndexReturn = (arr, item) => {
   arr.unshift(item);
   return arr;
 };
 
 console.log(last(test), prepend(test2, "INSERTED"));
+
+///// solution
+// Last
+type Last = <T>(items: T[]) => T;
+const last2: Last = (items) => items[items.length - 1];
+const lastItem = last2([1, 2, 3, 4, 5]);
+console.log(lastItem);
+
+// Prepend
+type Prepend = <T>(items: T[], item: T) => T[];
+const prepend2: Prepend = (items, item) => [item, ...items];
+const items = [1, 2, 3, 4, 5];
+const newItems = prepend2(items, 0);
+console.log(newItems);
