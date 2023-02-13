@@ -15,3 +15,8 @@ class Player extends User {}
 const dabin = new Player("dabin", "kim", "DBK");
 
 dabin.getFullName();
+
+type Players = {
+  nickname: string;
+  team: "RED" | "Blue";
+};

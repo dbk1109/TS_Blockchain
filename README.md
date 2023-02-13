@@ -130,5 +130,52 @@
 
 - 직접적으로 인스턴스를 만들수는 없다. (위에것에 선언시)
   `const dabin = new User("dabin", "kim", "DBK"); //ERROR!`
-![image](https://user-images.githubusercontent.com/75190062/218486270-cf879138-0b15-4b2e-bbbf-46881bd7fe01.png)
+  ![image](https://user-images.githubusercontent.com/75190062/218486270-cf879138-0b15-4b2e-bbbf-46881bd7fe01.png)
 
+  ```Typescript
+  // 형태지정
+  type Player1 = number | string;
+  // 정확한 값 지정
+  type Player2 = "1" | '2';
+  ```
+
+### Interface
+
+- #4.2 ~ 4.4 강의 다시 보고 재정리하기
+- 원하는 메소드와 프로퍼티를 클래스가 가지도록 강제할 수 있으며 자스로 컴파일되지 않는다.
+- 추상클래스와 비슷한 보호를 제공하지만 추상클래스는 일반 클래스로 자스에 컴파일되어 코드 량이 늘어난다. 때문에 인터페이스를 쓰는게 더 좋음.
+- `type`과 `interface`의 차이
+  ```Typescript
+  // type
+  type PlayerA = {
+    name: string
+  };
+  type PlayerAA = PlayerA & {
+    lastName: string
+  };
+  type PlayerAA = PlayerA & {
+    health: number //// ERROR!!!
+  };
+  const playerA: PlayerA = {
+    name: "dabin",
+    lastName: "kim"
+  };
+  // interface
+  interface PlayerB {
+    name: string
+  };
+  interface PlayerBB extends PlayerB {
+    lastName: string
+  };
+  interface PlayerB {
+    health: number //// WORKS!
+  };
+  const playerB: PlayerB = {
+    name: "dabin",
+    lastName: "kim"
+    health: 2
+  }
+  ```
+  - 목적은 동일하지만 인터페이스는 타입스크립트에게 오브젝트의 모양을 설명해주는 하나의 목적으로만 사용 가능.
+  - Class가 상속 할 수 있지만 모양이 다름. 이 경우 `class Player extends User`대신에 `class Player implements User`로 사용해야함.
+  - 인터페이스는 무조건 상속이 가능해야 하기 때문에 private나 protected를 사용할 수 없고 항상 public이어야 한다.
