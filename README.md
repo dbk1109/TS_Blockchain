@@ -129,7 +129,7 @@
   ```
 
 - 직접적으로 인스턴스를 만들수는 없다. (위에것에 선언시)
-  `const dabin = new User("dabin", "kim", "DBK"); //ERROR!`
+  `const dab = new User("dab", "kim", "DBK"); //ERROR!`
   ![image](https://user-images.githubusercontent.com/75190062/218486270-cf879138-0b15-4b2e-bbbf-46881bd7fe01.png)
 
   ```Typescript
@@ -157,7 +157,7 @@
     health: number //// ERROR!!!
   };
   const playerA: PlayerA = {
-    name: "dabin",
+    name: "da",
     lastName: "kim"
   };
   // interface
@@ -171,7 +171,7 @@
     health: number //// WORKS!
   };
   const playerB: PlayerB = {
-    name: "dabin",
+    name: "da",
     lastName: "kim"
     health: 2
   }
