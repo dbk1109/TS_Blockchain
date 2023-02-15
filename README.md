@@ -64,7 +64,7 @@
   type Add = (a: number, b: number) => number;
   const add: Add = (a, b) => a + b;
   ```
-- `Overloading` : 함수가 여러개의 Call Signature를 가지고 있을때 사용함. -> 이것은 Next.js 에서 다시 알아보기로 하자.
+- `Overloading` : 함수가 서로 다른 여러개의 Call Signature를 가지고 있을때 사용함. -> 이것은 Next.js 에서 다시 알아보기로 하자.
   ```typescript
   type Add = {
     (a: number, b: number): number;
@@ -179,3 +179,35 @@
   - 목적은 동일하지만 인터페이스는 타입스크립트에게 오브젝트의 모양을 설명해주는 하나의 목적으로만 사용 가능.
   - Class가 상속 할 수 있지만 모양이 다름. 이 경우 `class Player extends User`대신에 `class Player implements User`로 사용해야함.
   - 인터페이스는 무조건 상속이 가능해야 하기 때문에 private나 protected를 사용할 수 없고 항상 public이어야 한다.
+
+### Polymorphism
+
+- 다형성 : 다른모양의 코드를 가질 수 있게 하는것. => 제네릭을 사용함
+- 제네릭은 플레이스홀더 타입을 사용할 수 있게함. (기본은 콘크리트 타입)
+- `interface Sorage`라고 선언할 경우 이미 선언된 자바스크립트의 웹 스토리지 API를 중복 선언하게 됨
+- 내용예제
+
+  ```Typescript
+  interface SStorage<T> {
+    [key: string]: T;
+  }
+
+  class LocalStorage<T> {
+    private storage: SStorage<T> = {};
+    set(key: string, value: T) {
+      this.storage[key] = value;
+    }
+    remove(key: string) {
+      delete this.storage[key];
+    }
+    get(key: string): T {
+      return this.storage[key];
+    }
+    clear() {
+      this.storage = {};
+    }
+  }
+
+  const stringsStorage = new LocalStorage<string>();
+  const booleansStorage = new LocalStorage<boolean>();
+  ```

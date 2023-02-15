@@ -10,7 +10,7 @@
 //자바스크립트에서 배열의 맨 첫번째 원소의 인덱스는 0입니다.
 //구조 분해 할당과 전개 구문(Spread Operator)를 함께 사용하여 배열의 맨 앞에 원소를 넣은 후 바뀐 배열을 반환하는 방법을 생각해보세요.
 
-const test = [1, 2, 3, "4", 5];
+const test1 = [1, 2, 3, "4", 5];
 const test2 = [1, 2, 3, 4, 5];
 
 type IndexReturn = {
@@ -22,18 +22,18 @@ const prepend: IndexReturn = (arr, item) => {
   return arr;
 };
 
-console.log(last(test), prepend(test2, "INSERTED"));
+console.log(last(test1), prepend(test2, "INSERTED"));
 
 ///// solution
 // Last
-type Last = <T>(items: T[]) => T;
-const last2: Last = (items) => items[items.length - 1];
-const lastItem = last2([1, 2, 3, 4, 5]);
-console.log(lastItem);
+//type Last = <T>(items: T[]) => T;
+//const last2: Last = (items) => items[items.length - 1];
+//const lastItem = last2([1, 2, 3, 4, 5]);
+//console.log(lastItem);
 
-// Prepend
-type Prepend = <T>(items: T[], item: T) => T[];
-const prepend2: Prepend = (items, item) => [item, ...items];
-const items = [1, 2, 3, 4, 5];
-const newItems = prepend2(items, 0);
-console.log(newItems);
+//// Prepend
+//type Prepend = <T>(items: T[], item: T) => T[];
+//const prepend2: Prepend = (items, item) => [item, ...items];
+//const items = [1, 2, 3, 4, 5];
+//const newItems = prepend2(items, 0);
+//console.log(newItems);
