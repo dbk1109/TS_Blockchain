@@ -211,3 +211,7 @@
   const stringsStorage = new LocalStorage<string>();
   const booleansStorage = new LocalStorage<boolean>();
   ```
+
+### Blockchain
+
+- 타입스크립트 프로젝트는 설정파일이 필요한데 보통 config파일으로 불린다
